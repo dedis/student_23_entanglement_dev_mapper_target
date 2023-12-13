@@ -1,0 +1,19 @@
+
+MODULE_NAME := dm-ent
+obj-m := $(MODULE_NAME).o
+
+OBJ_LIST := target.o
+
+$(MODULE_NAME)-y += $(OBJ_LIST)
+
+
+# Normal CC flags
+ccflags-y := -O2 
+ccflags-y += -I$(src)
+ccflags-y += -Wall -Wno-declaration-after-statement
+ccflags-y += -fmacro-prefix-map=$(src)/=	# Strip the non-project directories from the filename used in the logs
+
+# Debug CC flags
+ccflags-$(CONFIG_ENT_DEBUG) += -DDEBUG
+ccflags-$(CONFIG_ENT_DEBUG) += -Og -g
+ccflags-$(CONFIG_ENT_DEBUG) += -fsanitize=kernel-address -fno-omit-frame-pointer
