@@ -32,7 +32,6 @@ struct entanglement_device {
     unsigned long *corrupted_blocks;
 
     // This is an array that maps the block sector to its checksum. Used to quickly check if checksums match when searching for corrupted blocks. 
-    // TODO: Maybe add lock for this. 
     uint *sector_checksum_map;
 
     // Contents of the last block in the entanglement. Kept in memory to avoid the I/O overhead of reading it every time we write a new block.

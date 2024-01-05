@@ -6,12 +6,13 @@
 #include <linux/vmalloc.h>
 #include <linux/bitmap.h>
 #include <linux/bitops.h>
+#include <linux/random.h>
 
 #include "utils.h"
 #include "device.h"
 
-#define BIOSET_SIZE 1024
-#define PAGE_POOL_SIZE 1024
+#define BIOSET_SIZE 2048
+#define PAGE_POOL_SIZE 2048
 
 #define NUMBER_OF_SECTORS_IN_BLOCK 4096 / sizeof(sector_t)
 
@@ -51,6 +52,56 @@ struct entangled_block {
     struct list_head list_node;
 };
 
+int corrupt_blocks(struct entanglement_device *ent_dev, uint corrupt_chance) {
+
+    int err;
+    struct entangled_block *block;
+    struct page *page;
+    u8 *page_ptr;
+
+    if (mutex_lock_interruptible(&ent_dev->entanglement_lock)) {
+        pr_err("Interrupted while waiting for the lock to the entanglement.\n");
+        return -EINTR;
+    }
+
+    page = mempool_alloc(page_pool, GFP_NOIO);
+    if (!page) {
+        pr_err("Could not allocate data page.\n");
+        return -ENOMEM;
+    }
+    page_ptr = kmap(page);
+
+
+    list_for_each_entry(block, &ent_dev->entanglement, list_node) {
+
+        uint randomValue;
+        get_random_bytes(&randomValue, sizeof(randomValue));
+        randomValue %= 100;
+
+        if (randomValue < corrupt_chance) {
+            err = ent_dev_rwSector(ent_dev, page, block->block_sector, READ);
+            if (err) {
+                pr_err("Error while reading block in order to corrupt it\n");
+                goto out;
+            }
+
+            page_ptr[1] += 1;
+
+            err = ent_dev_rwSector(ent_dev, page, block->block_sector, WRITE);
+            if (err) {
+                pr_err("Error while writing corrupted block back\n");
+                goto out;
+            }
+        }
+    }
+
+out:
+    kunmap(page);
+    mempool_free(page, page_pool);
+    mutex_unlock(&ent_dev->entanglement_lock);
+    return err;
+}
+
 int load_entanglement_and_checksums(struct entanglement_device *ent_dev) {
     
     struct page *sector_page;
@@ -88,7 +139,6 @@ int load_entanglement_and_checksums(struct entanglement_device *ent_dev) {
     }
 
     // First we load the entanglement. 
-    // sector = 0;
     sector = ent_dev->metadata_start_sector;
     checksum_sector = ent_dev->metadata_sector_size;
     int i;
@@ -131,14 +181,11 @@ int load_entanglement_and_checksums(struct entanglement_device *ent_dev) {
             // Ensure we are reading the correct checksum. 
             uint entangled_block_checksum;
             if (i % 2 == 0) {
-                // entangled_block_checksum = (void *) (checksum_page_ptr + (j * sizeof(uint)));
                 entangled_block_checksum = checksum_page_ptr[j * sizeof(uint)];
             }else {
-                // entangled_block_checksum = (void *) (checksum_page_ptr + ((j + 512) * sizeof(uint)));
                 entangled_block_checksum = checksum_page_ptr[(j + 512) * sizeof(uint)];
             }
 
-            // sector_t entangled_block_sector = (void *) (sector_page_ptr + (j * sizeof(sector_t)));
             sector_t entangled_block_sector = sector_page_ptr[j * sizeof(sector_t)];
             // Constantly update the sector of last block, so we can read it afterwards. 
             last_entangled_block_sector = entangled_block_sector;
@@ -227,14 +274,15 @@ int store_entanglement_and_checksums(struct entanglement_device *ent_dev) {
         return -EINTR;
     }
 
-    struct entangled_block *block;
-    list_for_each_entry(block, &ent_dev->entanglement, list_node) {
+    struct entangled_block *block, *tmp;
+    list_for_each_entry_safe(block, tmp, &ent_dev->entanglement, list_node) {
+        list_del(&block->list_node);
         // Free the memory that was allocated in load_entanglement_and_checksums() and while this device mapper was being used.
         kfree(block); 
     }
 
-out:
     mutex_unlock(&ent_dev->entanglement_lock);
+out:
     kunmap(checksum_page);
     kunmap(sector_page);
     mempool_free(checksum_page, page_pool);
@@ -414,8 +462,6 @@ void repair_block(struct entanglement_device *ent_dev, struct entangled_block *b
     // If even one of the adjacent blocks is irrecoverable, it means we ran into one of the irrecoverable types of failure.
     if (left_state == IRRECOVERABLE || right_state == IRRECOVERABLE) {
         bitmap_set(irrecoverable_blocks_bitmap, block->block_sector, 1);
-        // TODO: Nothing else happens here. Maybe I should add some count how many are irrecoverable, although I have the bitmap.
-        //       This is just for the statistic on how many block are lost. Probably nothing else needs to happen here. 
         return;
     }
 
@@ -522,7 +568,6 @@ int repair_corrupted_blocks(struct entanglement_device *ent_dev) {
     }
 
     // At this point I have repaired all blocks that can be repaired. 
-    // TODO: I can maybe save the statistics of how many blocks were lost before freeing the bitmap. 
     bitmap_free(irrecoverable_blocks_bitmap);
 
     return err;
@@ -585,15 +630,20 @@ static int entanglement_tgt_ctr(struct dm_target *ti, unsigned int argc, char **
     uint dev_size;
     int redundancy_flag;
 
-    // For now, the plan is to have three arguments, first the device path, second the device size as number of 4KB blocks, 
-    // and third the redundancy flag, to know when to try and repair it.
-    if (argc != 3) {
+    uint corrupt_chance;
+
+    int init_flag;
+
+    // We have four arguments here: the device path, size of the device as number of 4KB blocks, redundancy flag, and the init flag. 
+    if (argc != 5) {
         ti->error = "Invaid argument count";
         return -EINVAL;
     }
     dev_path = argv[0];
     sscanf(argv[1], "%u", &dev_size);
     sscanf(argv[2], "%u", &redundancy_flag);
+    sscanf(argv[3], "%d", &init_flag);
+    sscanf(argv[4], "%u", &corrupt_chance);
 
     ent_dev = kzalloc(sizeof(struct entanglement_device), GFP_KERNEL);
     if (!ent_dev) {
@@ -614,6 +664,11 @@ static int entanglement_tgt_ctr(struct dm_target *ti, unsigned int argc, char **
     ent_dev->metadata_start_sector = ((dev_size - ent_dev->metadata_size) / 2) / 8 * 8;
     ent_dev->write_sector_scale = ((dev_size - ent_dev->metadata_size)/2 / 8 * 8) + ent_dev->metadata_size;
 
+    // We have this initialization here and also in the load function, 
+    // since we do not call load in the case when the device is being opened for the first time.
+    ent_dev->next_sector = ent_dev->metadata_start_sector;
+    ent_dev->next_checksum = ent_dev->metadata_start_sector + ent_dev->metadata_sector_size;
+
     mutex_init(&ent_dev->entanglement_lock);
     INIT_LIST_HEAD(&ent_dev->entanglement);
 
@@ -624,7 +679,6 @@ static int entanglement_tgt_ctr(struct dm_target *ti, unsigned int argc, char **
     }
 
     mutex_init(&ent_dev->corrupted_blocks_lock);
-
 
     ent_dev->corrupted_blocks = bitmap_alloc(dev_size, GFP_KERNEL);
     if (!ent_dev->corrupted_blocks) {
@@ -665,12 +719,20 @@ static int entanglement_tgt_ctr(struct dm_target *ti, unsigned int argc, char **
     }
     ent_dev->checksum_buffer_size = 0;
 
-    // TODO: Change this, for now I use the redundancy flag.
-    if (redundancy_flag) {
+    // We are only NOT loading the entanglement if this is the first time this device is being opened. 
+    if (!init_flag) {
         err = load_entanglement_and_checksums(ent_dev);
         if (err) {
             pr_err("Error while loading entanglement and checksums: %d\n", err);
             goto err_loading;
+        }
+    }
+
+    if (corrupt_chance > 0) {
+        err = corrupt_blocks(ent_dev, corrupt_chance);
+        if (err) {
+            pr_err("Error while corrupting blocks: %d\n", err);
+            goto err_corruption;
         }
     }
     
@@ -694,7 +756,7 @@ static int entanglement_tgt_ctr(struct dm_target *ti, unsigned int argc, char **
 
 
 err_check_corruption:
-
+err_corruption:
 err_loading:
     kfree(ent_dev->block_checksum_buffer);
 err_checksum_buffer_alloc:
@@ -711,19 +773,15 @@ err_bitmap_alloc:
     dm_put_device(ti, ent_dev->dev);
     kfree(ent_dev);
 err_dev_allocation:
-    printk(KERN_INFO "Leaving the entanglement_tgt_ctr function with error.\n");
     return err;
 }
 
 static void entanglement_tgt_dtr(struct dm_target *ti) {
 
-    printk(KERN_INFO "Entered entanglement_tgt_dtr function\n");
-
     struct entanglement_device *ent_dev = (struct entanglement_device *) ti->private;
 
     // Store the entanglement list and checksums. Actually just flushes the buffers in case of leftover metadata. 
     store_entanglement_and_checksums(ent_dev);
-    printk(KERN_INFO "Successfully stored metadata\n");
 
     dm_put_device(ti, ent_dev->dev);
     kfree(ent_dev->block_checksum_buffer);
@@ -748,8 +806,6 @@ static void ent_dev_read_end_io(struct bio *bio) {
 }
 
 int process_read_bio(struct entanglement_device *ent_dev, struct bio *bio) {
- 
-    printk(KERN_INFO "[READ PROCESS] Entered process_read_bio.\n");
 
     int err;
     struct bio *cloned_bio;
@@ -762,19 +818,11 @@ int process_read_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -ENOMEM;
         goto err_bio_cloning;
     }
-    printk(KERN_INFO "[READ PROCESS] Successfully cloned READ bio.\n");
-
-
-    if (bio->bi_iter.bi_sector % 2 != 0) {
-        cloned_bio->bi_iter.bi_sector -= 1;
-    }
 
     cloned_bio->bi_end_io = ent_dev_read_end_io;
     cloned_bio->bi_private = bio;
 
-    printk(KERN_INFO "[READ PROCESS] Submitting READ bio.\n");
     submit_bio(cloned_bio);
-    printk(KERN_INFO "[READ PROCESS] READ submitted, returning from process_read_bio.\n");
     
     return 0;
 
@@ -784,7 +832,6 @@ err_bio_cloning:
     return err;
 }
 
-// TODO: Check if this is correct and done. 
 static void ent_dev_write_end_io(struct bio *bio) {
 
     struct bio *orig_bio = bio->bi_private;
@@ -796,7 +843,6 @@ static void ent_dev_write_end_io(struct bio *bio) {
     mempool_free(bio->bi_io_vec->bv_page, page_pool);
 }
 
-// TODO: Check if this is correct and done. 
 static void ent_dev_write_end_io_clone(struct bio *bio) {
 
     struct bio *orig_bio = bio->bi_private;
@@ -808,8 +854,6 @@ static void ent_dev_write_end_io_clone(struct bio *bio) {
 }
 
 int flush_metadata(struct entanglement_device *ent_dev, enum BufferType type) {
-
-    printk(KERN_INFO "[WRITE PROCESS] Entered the flush_metadata function.\n");
 
     char *buffer = (type == SECTOR) ? ent_dev->block_sector_buffer : ent_dev->block_checksum_buffer;
     sector_t sector = (type == SECTOR) ? ent_dev->next_sector : ent_dev->next_checksum;
@@ -834,19 +878,13 @@ int flush_metadata(struct entanglement_device *ent_dev, enum BufferType type) {
 
     // Reset buffer. 
     if (type == SECTOR) {
-        for (int i = 0; i < ENT_BLOCK_SIZE / sizeof(DEFAULT_SECTOR_VALUE); i++) {
-            memcpy(buffer + i*sizeof(DEFAULT_SECTOR_VALUE), DEFAULT_SECTOR_VALUE, sizeof(DEFAULT_SECTOR_VALUE));   
-        }
-        // ent_dev->sector_buffer_size = buffer;
+        memset(buffer, 0xFF, sizeof(buffer));
         ent_dev->sector_buffer_size = 0;
 
         // Update sector. 
         ent_dev->next_sector += 1;
     }else {
-        for (int i = 0; i < ENT_BLOCK_SIZE / sizeof(DEFAULT_CHECKSUM_VALUE); i++) {
-            memcpy(buffer + i*sizeof(DEFAULT_CHECKSUM_VALUE), DEFAULT_CHECKSUM_VALUE, sizeof(DEFAULT_CHECKSUM_VALUE));   
-        }
-        // ent_dev->checksum_buffer_size = buffer;
+        memset(buffer, 0xFF, sizeof(buffer));
         ent_dev->checksum_buffer_size = 0;
 
         // Update sector. 
@@ -862,8 +900,6 @@ out:
 }
 
 int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
-
-    printk(KERN_INFO "[WRITE PROCESS] Entered process_write_bio.\n");
 
     struct bio *data_bio;
     struct bio *parity_bio;
@@ -889,7 +925,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         pr_err("Error while allocating new page for parity.\n");
         return -ENOMEM;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully allocated parity_page.\n");
 
     parity_page_ptr = kmap(parity_page);
 
@@ -898,7 +933,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         pr_err("Interrupted while waiting for the lock to the metadata buffers.\n");
         return -EINTR;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully got the metadata_buffers_lock.\n");
 
     bio_get(bio);
 
@@ -908,7 +942,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -ENOMEM;
         goto err_bio_cloning;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully cloned bio.\n");
 
     bio_get(bio);
 
@@ -918,15 +951,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -ENOMEM;
         goto err_bio_allocation;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully allocated new bio for the parity.\n");
-
-    // data_buffer = kmalloc(ENT_BLOCK_SIZE, GFP_KERNEL);
-    // if (!data_buffer) {
-    //     pr_err("Error while allocating buffer for bio data when writing.\n");
-    //     err = -ENOMEM;
-    //     goto err_biodata_buffer_alloc;
-    // }
-
 
     parity_buffer = kmalloc(ENT_BLOCK_SIZE, GFP_KERNEL);
     if (!parity_buffer) {
@@ -934,10 +958,8 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -ENOMEM;
         goto err_parity_buffer_alloc;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully allocated parity_buffer.\n");
 
     if (!bio_data(data_bio)) {
-        printk(KERN_INFO "[WRITE PROCESS] NULL returned from bio_data(). No data in the bio, even though I checked it before. WTF???\n");
         goto err_parity_buffer_alloc;
     }
     data_buffer = (char *) bio_data(data_bio);
@@ -951,19 +973,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
             parity_buffer[i] = data_buffer[i] ^ ent_dev->last_entangled_block[i];
         }
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully calculated the XOR (or copied in case of beginning of entanglement).\n");
-
-    // TODO: Check which of these is correct. Can I just use bio_data, or do I need the bio_for_each_segment.
-
-    // TODO: REEEEALLY check this part!!!!!!! 
-    // int curr_index = 0;
-    // bio_for_each_segment(bvec, data_bio, iter) {
-    //     char *data = kmap(bvec.bv_page) + bvec.bv_offset;
-    //     for (int i = 0 ; i < bvec.bv_len && curr_index < sizeof(buffer) ; i++, curr_index++) {
-    //         parity_buffer[curr_index] = data[i] ^ ent_dev->last_entangled_block[curr_index];
-    //     }
-    //     kunmap(bvec.bv_page);
-    // }
 
     memcpy(parity_page_ptr, parity_buffer, sizeof(parity_buffer));
 
@@ -972,16 +981,8 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -EINVAL;
         goto err_adding_page;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully added parity_page to bio.\n");
 
-    // Update bio sectors, such that we have the following in storage: data->parity->data->parity etc.
-    // if (bio->bi_iter.bi_sector % 2 == 0) {
-    //     data_sector = bio->bi_iter.bi_sector;
-    //     parity_sector = data_sector + 1;
-    // }else {
-    //     parity_sector = bio->bi_iter.bi_sector;
-    //     data_sector = parity_sector - 1;
-    // }
+    // Update bio sectors.
     data_sector = bio->bi_iter.bi_sector;
     parity_sector = data_sector + ent_dev->write_sector_scale;
 
@@ -998,7 +999,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -ENOMEM;
         goto err_new_data_allocation;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully allocated new_data_block.\n");
 
     new_parity_block = kmalloc(sizeof(struct entangled_block), GFP_KERNEL);
     if (!new_parity_block) {
@@ -1006,13 +1006,10 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         err = -ENOMEM;
         goto err_new_parity_allocation;
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully allocated new_parity_block.\n");
 
     // Calculate checksums and add them to the buffer, flushing the buffer if needed. When flushing, update next_checksum. Also update curr_buffer_size.
     uint data_checksum = crc32b(data_buffer);
     uint parity_checksum = crc32b(parity_buffer);
-
-    printk(KERN_INFO "[WRITE PROCESS] Successfully calculated checksums.\n");
 
     // Add sectors and checksums to blocks. Add them to the entanglement list. 
     new_data_block->block_sector = data_sector;
@@ -1025,16 +1022,11 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
     list_add_tail(&new_data_block->list_node, &ent_dev->entanglement);
     list_add_tail(&new_parity_block->list_node, &ent_dev->entanglement);
 
-    printk(KERN_INFO "[WRITE PROCESS] Successfully added new blocks to list.\n");
-
     // Add the data sector and checksum, and flush buffers if needed.
     if (ent_dev->sector_buffer_size + sizeof(data_sector) < ENT_BLOCK_SIZE) {
-        // printk(KERN_INFO "[WRITE PROCESS] Entered the if part of adding data sector to sector buffer.\n");
         memcpy(ent_dev->block_sector_buffer + ent_dev->sector_buffer_size, &data_sector, sizeof(data_sector));
         ent_dev->sector_buffer_size += sizeof(data_sector);
-        // printk(KERN_INFO "[WRITE PROCESS] Leaving the if part of adding data sector to sector buffer.\n");
     }else {
-        // printk(KERN_INFO "[WRITE PROCESS] Entered the else part of adding data sector to sector buffer.\n");
         err = flush_metadata(ent_dev, SECTOR);
         if (err) {
             goto err_metadata_flush;
@@ -1043,7 +1035,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         memcpy(ent_dev->block_sector_buffer + ent_dev->sector_buffer_size, &data_sector, sizeof(data_sector));
         ent_dev->sector_buffer_size += sizeof(data_sector);
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully added data sector to sector buffer, and flushed if it was necessary.\n");
 
     if (ent_dev->checksum_buffer_size + sizeof(data_checksum) < ENT_BLOCK_SIZE) {
         memcpy(ent_dev->block_checksum_buffer + ent_dev->checksum_buffer_size, &data_checksum, sizeof(data_checksum));
@@ -1058,7 +1049,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         memcpy(ent_dev->block_checksum_buffer + ent_dev->checksum_buffer_size, data_checksum, sizeof(data_checksum));
         ent_dev->checksum_buffer_size += sizeof(data_checksum);
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully added data checksum to checksum buffer, and flushed if it was necessary.\n");
 
     // Add the parity sector and checksum, and flush buffers if needed.
     if (ent_dev->sector_buffer_size + sizeof(parity_sector) < ENT_BLOCK_SIZE) {
@@ -1073,7 +1063,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         memcpy(ent_dev->block_sector_buffer + ent_dev->sector_buffer_size, &parity_sector, sizeof(parity_sector));
         ent_dev->sector_buffer_size += sizeof(parity_sector);
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully added parity sector to sector buffer, and flushed if it was necessary.\n");
 
     if (ent_dev->checksum_buffer_size + sizeof(parity_checksum) < ENT_BLOCK_SIZE) {
         memcpy(ent_dev->block_checksum_buffer + ent_dev->checksum_buffer_size, &parity_checksum, sizeof(parity_checksum));
@@ -1088,7 +1077,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
         memcpy(ent_dev->block_checksum_buffer + ent_dev->checksum_buffer_size, &parity_checksum, sizeof(parity_checksum));
         ent_dev->checksum_buffer_size += sizeof(parity_checksum);
     }
-    printk(KERN_INFO "[WRITE PROCESS] Successfully added parity checksum to checksum buffer, and flushed if it was necessary.\n");
 
     // Update the last_entangled_block. 
     memcpy(ent_dev->last_entangled_block, parity_buffer, ENT_BLOCK_SIZE);
@@ -1097,7 +1085,6 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
     ent_dev->sector_checksum_map[data_sector] = data_checksum;
     ent_dev->sector_checksum_map[parity_sector] = parity_checksum;
 
-    // TODO: Check the correctness of this. 
     parity_bio->bi_end_io = ent_dev_write_end_io;
     parity_bio->bi_private = bio;
 
@@ -1108,12 +1095,8 @@ int process_write_bio(struct entanglement_device *ent_dev, struct bio *bio) {
     submit_bio(parity_bio);
 
     kunmap(parity_page);
-    // kfree(new_data_block);
-    // kfree(new_parity_block);
     kfree(parity_buffer);
     mutex_unlock(&ent_dev->metadata_buffers_lock);
-
-    printk(KERN_INFO "[WRITE PROCESS] Submitted bios, freed memory, and returning from process_write_bio without error.\n");
 
     return 0;
 
@@ -1138,8 +1121,6 @@ err_bio_cloning:
     bio->bi_status = BLK_STS_IOERR;
     bio_endio(bio);
 
-    printk(KERN_INFO "[WRITE PROCESS] Returning from process_write_bio with error.\n");
-
     return err;
 }
 
@@ -1148,15 +1129,11 @@ err_bio_cloning:
 */
 static int entanglement_tgt_map(struct dm_target *ti, struct bio *bio) {
 
-    printk(KERN_INFO "Entered the entanglement_tgt_map function.\n");
-
     if (!bio) {
-        printk(KERN_INFO "Bio is NULL????? WTF????? What is going on?\n");
         return DM_MAPIO_KILL;
     }
 
     if (unlikely(!bio_has_data(bio))) {
-        printk(KERN_INFO "Bio has no data, WTF??? What to do here????\n");
         return DM_MAPIO_REMAPPED;
     }
 
@@ -1166,21 +1143,16 @@ static int entanglement_tgt_map(struct dm_target *ti, struct bio *bio) {
         err = process_read_bio(ti->private, bio);
         if (err) {
             pr_err("Error while processing a read bio.\n");
-            printk(KERN_INFO "ERROR while processing a READ and returning from tgt_map.\n");
             return DM_MAPIO_KILL;
         }
-        printk(KERN_INFO "Successfully processed a READ and returning from tgt_map.\n");
         return DM_MAPIO_SUBMITTED;
     }
 
     err = process_write_bio(ti->private, bio);
     if (err) {
         pr_err("Error while processing write bio.\n");
-        printk(KERN_INFO "ERROR while processing a WRTIE and returning from tgt_map.\n");
         return DM_MAPIO_KILL;
     }
-
-    printk(KERN_INFO "Successfully processed a WRITE and returning from tgt_map.\n");
 
     return DM_MAPIO_SUBMITTED;
 }
@@ -1225,15 +1197,12 @@ struct target_type entanglement_target = {
 */
 int dm_entanglement_init(void) {
 
-    printk(KERN_INFO "Entered the dm_entanglement_init function.\n");
-
     // Initialize the bioset.
     int err = bioset_init(&bioset, BIOSET_SIZE, 0, BIOSET_NEED_BVECS);
     if (err) {
         pr_err("Error while initializing the bioset: %d\n", err);
         goto err_bioset_alloc;
     }
-    printk(KERN_INFO "Successfully initialized the bioset.\n");
 
     // Initialize the page pool.
 	page_pool = mempool_create_page_pool(PAGE_POOL_SIZE, 0);
@@ -1242,7 +1211,6 @@ int dm_entanglement_init(void) {
 		err = -ENOMEM;
         goto err_pagepool_creation;
 	}
-    printk(KERN_INFO "Successfully initialized the page pool.\n");
 
     err = dm_register_target(&entanglement_target);
 
@@ -1251,10 +1219,6 @@ int dm_entanglement_init(void) {
         goto err_target_registration;
     }
 
-    printk(KERN_INFO "Successfully registered target.\n");
-
-    printk(KERN_INFO "Leaving the dm_entanglement_function without error.\n");
-
     return err;
 
 err_pagepool_creation:
@@ -1262,7 +1226,6 @@ err_pagepool_creation:
 err_bioset_alloc:
     dm_unregister_target(&entanglement_target);
 err_target_registration:
-    printk(KERN_INFO "Leaving the dm_entanglement_function with error.\n");
     return err;
 }
 

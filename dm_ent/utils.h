@@ -69,14 +69,12 @@ it would take about 6 + 46n instructions. */
 
 unsigned int crc32b(unsigned char *message) {
 
-    printk(KERN_INFO "Entered the checksum function.\n");
     int i, j;
     unsigned int byte, crc, mask;
 
     i = 0;
     crc = 0xFFFFFFFF;
     while (message[i] != 0) {
-        printk(KERN_INFO "Entered the while in the checksum function, with index i=%d.\n", i);
         byte = message[i];            // Get next byte.
         crc = crc ^ byte;
         for (j = 7; j >= 0; j--) {    // Do eight times.
@@ -86,7 +84,6 @@ unsigned int crc32b(unsigned char *message) {
         i = i + 1;
     }
 
-    printk(KERN_INFO "Leaving the checksum function.\n");
     return ~crc;
 }
 

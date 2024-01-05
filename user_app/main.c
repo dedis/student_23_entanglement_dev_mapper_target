@@ -14,11 +14,8 @@
 
 #define DEFAULT_SECTOR_VALUE 0xFFFFFFFFFFFFFFFFULL
 
-
 unsigned int metadata_size;
 int64_t disk_size;
-
-
 
 #include "log.h"
 
@@ -44,8 +41,7 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
     char * dup_virt_dev_name = strdup(virt_dev_name);
     char * dup_params = strdup(params);
 
-    // ent_log_debug("Creating /dev/mapper/%s", dup_virt_dev_name);
-    printf("Creating /dev/mapper/%s\n", dup_virt_dev_name);
+    ent_log_debug("Creating /dev/mapper/%s", dup_virt_dev_name);
 
     /* Instantiate the DM task (with the CREATE ioctl command) */
     if ((dmt = dm_task_create(DM_DEVICE_CREATE)) == NULL) {
@@ -53,8 +49,7 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
         err = 1;
         goto dup_free;
     }
-    // ent_log_debug("Successfully created dm_task");
-    printf("Successfully created dm_task\n");
+    ent_log_debug("Successfully created dm_task");
 
     /* Set the name of the target device (to be created) */
     if (!dm_task_set_name(dmt, dup_virt_dev_name)) {
@@ -62,8 +57,7 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
         err = 2;
         goto out;
     }
-    // ent_log_debug("Successfully set device name");
-    printf("Successfully set device name\n");
+    ent_log_debug("Successfully set device name");
 
     /* State that it is an entanglement device, pass the start and size, and the
      * constructor parameters */
@@ -72,8 +66,7 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
     	err = 3;
         goto out;
     }
-    // ent_log_debug("Successfully added DM target and parameters");
-    printf("Successfully added DM target and parameters\n");
+    ent_log_debug("Successfully added DM target and parameters");
 
     /* Say that we want a new node under /dev/mapper */
     if (!dm_task_set_add_node(dmt, DM_ADD_NODE_ON_CREATE)) {
@@ -81,8 +74,7 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
         err = 4;
         goto out;
     }
-    // ent_log_debug("Successfully set the ADD_NODE flag");
-    printf("Successfully set the ADD_NODE flag\n");
+    ent_log_debug("Successfully set the ADD_NODE flag");
 
     /* Get a cookie (request ID, basically) to wait for task completion */
     if (!dm_task_set_cookie(dmt, &cookie, udev_flags)) {
@@ -90,8 +82,7 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
         err = 5;
         goto out;
     }
-    // ent_log_debug("Successfully got a cookie");
-    printf("Successfully got a cookie\n");
+    ent_log_debug("Successfully got a cookie");
 
     /* Run the task */
     if (!dm_task_run(dmt)) {
@@ -99,13 +90,11 @@ int ent_dm_create(char * virt_dev_name, uint64_t num_sectors, char * params)
         err = 6;
         goto out;
     }
-    // ent_log_debug("Successfully run DM task");
-    printf("Successfully run DM task\n");
+    ent_log_debug("Successfully run DM task");
 
     /* Wait for completion */
     dm_udev_wait(cookie);
-    // ent_log_debug("Task completed");
-    printf("Task completed\n");
+    ent_log_debug("Task completed");
 
     // No prob
     err = 0;
@@ -323,11 +312,12 @@ int main(int argc, char const *argv[])
     char *command;
     int redundancy_flag = 0;
     char params[1024];
+    unsigned int corrupt_chance;
 
     int err;
 
-    if (argc != 3 && argc != 4) {
-        printf("Wrong number of arguments. Usage: ./entanglement_app <command(open/close)> <dev_path> [<redundancy>]\n");
+    if (argc != 3 && argc != 4 && argc != 5) {
+        printf("Wrong number of arguments. Usage: ./entanglement_app <command(init/open/close/corrupt)> <dev_path> [<redundancy_flag>] [<corrupt_chance>]\n");
         return 1;
     }
     
@@ -337,25 +327,23 @@ int main(int argc, char const *argv[])
     if (argc == 4) {
         redundancy_flag = 1;
     }
-
-    /* Build param list */
-	sprintf(params, "%s %lu %d", dev_path, disk_size, redundancy_flag);
-
-    metadata_size = (disk_size * 3U) >> 10;
-    printf("%u\n", metadata_size);
+    if (argc == 5) {
+        redundancy_flag = 1;
+        corrupt_chance = argv[4];
+    }
 
     // The two 8s in the end is to properly align the size for the block size of 4096 bytes. 
     unsigned int virtual_device_size = (((disk_size-metadata_size)*8) / 2) / 8 * 8;
-
-    // This was just for testing purposes.     
-    printf("%s\n", params);
-
     
     if (strcmp(command, "init") == 0) {
-        char buf[ENT_BLK_SIZE];
-        memset(buf, 0xFF, sizeof(buf));
-        ent_disk_writeSector(dev_path, virtual_device_size, buf);
+        sprintf(params, "%s %lu %d %d %u", dev_path, disk_size, redundancy_flag, 1, 0);
+        err = ent_dm_create(ENT_DEV_NAME, virtual_device_size, params);
+        if (err) {
+            perror("Error while creating dm target.\n");
+            return err;
+        }
     }else if (strcmp(command, "open") == 0) {
+        sprintf(params, "%s %lu %d %d %u", dev_path, disk_size, redundancy_flag, 0, 0);
         err = ent_dm_create(ENT_DEV_NAME, virtual_device_size, params);
         if (err) {
             perror("Error while creating dm target.\n");
@@ -367,8 +355,15 @@ int main(int argc, char const *argv[])
             perror("Error while destroying dm target.\n");
             return err;
         }
+    }else if (strcmp(command, "corrupt") == 0){
+        sprintf(params, "%s %lu %d %d %u", dev_path, disk_size, redundancy_flag, 0, corrupt_chance);
+        err = ent_dm_create(ENT_DEV_NAME, virtual_device_size, params);
+        if (err) {
+            perror("Error while creating dm target.\n");
+            return err;
+        }
     }else {
-        printf("Wrong command. Usage: ./entanglement_app <command(open/close)> <dev_path> [<redundancy>]\n");
+        printf("Wrong command. Usage: ./entanglement_app <command(init/open/close)> <dev_path> [<redundancy>]\n");
         return 2;
     }
     

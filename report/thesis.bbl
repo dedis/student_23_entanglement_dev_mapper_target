@@ -1,0 +1,265 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{elia}{article}{}
+      \name{author}{1}{}{%
+        {{hash=354ce40452f685e3182e99dbd46c5ab7}{%
+           family={Anzuoni},
+           familyi={A\bibinitperiod},
+           given={Elia},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{354ce40452f685e3182e99dbd46c5ab7}
+      \strng{fullhash}{354ce40452f685e3182e99dbd46c5ab7}
+      \strng{bibnamehash}{354ce40452f685e3182e99dbd46c5ab7}
+      \strng{authorbibnamehash}{354ce40452f685e3182e99dbd46c5ab7}
+      \strng{authornamehash}{354ce40452f685e3182e99dbd46c5ab7}
+      \strng{authorfullhash}{354ce40452f685e3182e99dbd46c5ab7}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{https://infoscience.epfl.ch/record/297353}
+      \field{title}{Hidden Filesystem Design and Improvement}
+      \field{year}{2022}
+    \endentry
+    \entry{ldd3}{book}{}
+      \name{author}{3}{}{%
+        {{hash=729670cd9d39b9b575390147a29d51d7}{%
+           family={Corbet},
+           familyi={C\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=548a2260c8f6dbadc0d85dfad02ba349}{%
+           family={Rubini},
+           familyi={R\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8edf24ea3e75c726f2c163493ab3e3c3}{%
+           family={Kroah-Hartman},
+           familyi={K\bibinithyphendelim H\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media}%
+      }
+      \strng{namehash}{9fbbcf4a72b42b4d94a411ddd67e1136}
+      \strng{fullhash}{9fbbcf4a72b42b4d94a411ddd67e1136}
+      \strng{bibnamehash}{9fbbcf4a72b42b4d94a411ddd67e1136}
+      \strng{authorbibnamehash}{9fbbcf4a72b42b4d94a411ddd67e1136}
+      \strng{authornamehash}{9fbbcf4a72b42b4d94a411ddd67e1136}
+      \strng{authorfullhash}{9fbbcf4a72b42b4d94a411ddd67e1136}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3rd}
+      \field{isbn}{978-0596005900}
+      \field{title}{Linux Device Drivers}
+      \field{year}{2005}
+      \verb{urlraw}
+      \verb https://www.oreilly.com/library/view/linux-device-drivers/0596005903/
+      \endverb
+      \verb{url}
+      \verb https://www.oreilly.com/library/view/linux-device-drivers/0596005903/
+      \endverb
+    \endentry
+    \entry{kilian}{article}{}
+      \name{author}{1}{}{%
+        {{hash=498719a80700c5530bd4006f3878affc}{%
+           family={d'Eternod},
+           familyi={d\bibinitperiod},
+           given={Kilian},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{498719a80700c5530bd4006f3878affc}
+      \strng{fullhash}{498719a80700c5530bd4006f3878affc}
+      \strng{bibnamehash}{498719a80700c5530bd4006f3878affc}
+      \strng{authorbibnamehash}{498719a80700c5530bd4006f3878affc}
+      \strng{authornamehash}{498719a80700c5530bd4006f3878affc}
+      \strng{authorfullhash}{498719a80700c5530bd4006f3878affc}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{https://infoscience.epfl.ch/record/304411}
+      \field{title}{Data corruption in plausibly deniable storage: challenges and potential solutions}
+      \field{year}{2023}
+    \endentry
+    \entry{dd_man}{online}{}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{dd(1) - Linux man page}
+      \field{urlday}{4}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://linux.die.net/man/1/dd
+      \endverb
+      \verb{url}
+      \verb https://linux.die.net/man/1/dd
+      \endverb
+    \endentry
+    \entry{estrada}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=40da0054f68fa59a7b41b53fd2c07445}{%
+           family={Estrada-Galiñanes},
+           familyi={E\bibinithyphendelim G\bibinitperiod},
+           given={Vero},
+           giveni={V\bibinitperiod}}}%
+        {{hash=a08d3b05218c510f4c25178028c639da}{%
+           family={Pâris},
+           familyi={P\bibinitperiod},
+           given={Jehan-François},
+           giveni={J\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=6668285eef28becfbea5f2cf39c9dc7b}{%
+           family={Felber},
+           familyi={F\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{b7fe97a6b4d530c13c8dc6be1d39820f}
+      \strng{fullhash}{b7fe97a6b4d530c13c8dc6be1d39820f}
+      \strng{bibnamehash}{b7fe97a6b4d530c13c8dc6be1d39820f}
+      \strng{authorbibnamehash}{b7fe97a6b4d530c13c8dc6be1d39820f}
+      \strng{authornamehash}{b7fe97a6b4d530c13c8dc6be1d39820f}
+      \strng{authorfullhash}{b7fe97a6b4d530c13c8dc6be1d39820f}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 IEEE 35th International Performance Computing and Communications Conference (IPCCC)}
+      \field{title}{Simple data entanglement layouts with high reliability}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/PCCC.2016.7820651
+      \endverb
+    \endentry
+    \entry{love2010linux}{book}{}
+      \name{author}{1}{}{%
+        {{hash=3262f21e1ec854d54444577e29125b8e}{%
+           family={Love},
+           familyi={L\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{3262f21e1ec854d54444577e29125b8e}
+      \strng{fullhash}{3262f21e1ec854d54444577e29125b8e}
+      \strng{bibnamehash}{3262f21e1ec854d54444577e29125b8e}
+      \strng{authorbibnamehash}{3262f21e1ec854d54444577e29125b8e}
+      \strng{authornamehash}{3262f21e1ec854d54444577e29125b8e}
+      \strng{authorfullhash}{3262f21e1ec854d54444577e29125b8e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3rd}
+      \field{isbn}{978-0-672-32946-3}
+      \field{title}{Linux Kernel Development}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://www.oreilly.com/library/view/linux-kernel-development/9780768696974/
+      \endverb
+      \verb{url}
+      \verb https://www.oreilly.com/library/view/linux-kernel-development/9780768696974/
+      \endverb
+    \endentry
+    \entry{mdadm_man}{online}{}
+      \field{sortinit}{m}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{mdadm(8) - Linux man page}
+      \field{urlday}{4}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://linux.die.net/man/8/mdadm
+      \endverb
+      \verb{url}
+      \verb https://linux.die.net/man/8/mdadm
+      \endverb
+    \endentry
+    \entry{mkfs.ext4_man}{online}{}
+      \field{sortinit}{m}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{mkfs.ext4(8) - Linux man page}
+      \field{urlday}{4}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://linux.die.net/man/8/mkfs.ext4
+      \endverb
+      \verb{url}
+      \verb https://linux.die.net/man/8/mkfs.ext4
+      \endverb
+    \endentry
+    \entry{mount_man}{online}{}
+      \field{sortinit}{m}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{mount(8) - Linux man page}
+      \field{urlday}{4}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://linux.die.net/man/8/mount
+      \endverb
+      \verb{url}
+      \verb https://linux.die.net/man/8/mount
+      \endverb
+    \endentry
+    \entry{shufflecake-code}{misc}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{note}{Shufflecake repository: https://codeberg.org/shufflecake}
+    \endentry
+    \entry{time_man}{online}{}
+      \field{sortinit}{t}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{time(1) - Linux man page}
+      \field{urlday}{4}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://linux.die.net/man/1/time
+      \endverb
+      \verb{url}
+      \verb https://linux.die.net/man/1/time
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,1860 @@
+*************************************
+Starting iteration 1
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0102084 s, 103 MB/s
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.008s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0555525 s, 94.4 MB/s
+
+real	0m0.058s
+user	0m0.005s
+sys	0m0.053s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0449294 s, 233 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.224864 s, 233 MB/s
+
+real	0m0.226s
+user	0m0.000s
+sys	0m0.224s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.452435 s, 232 MB/s
+
+real	0m0.455s
+user	0m0.004s
+sys	0m0.450s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.894911 s, 234 MB/s
+
+real	0m0.897s
+user	0m0.008s
+sys	0m0.889s
+------------------------------------------
+*************************************
+Starting iteration 2
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00472509 s, 222 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0225967 s, 232 MB/s
+
+real	0m0.024s
+user	0m0.004s
+sys	0m0.020s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0449039 s, 234 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223802 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.012s
+sys	0m0.214s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.448094 s, 234 MB/s
+
+real	0m0.449s
+user	0m0.012s
+sys	0m0.436s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.912464 s, 230 MB/s
+
+real	0m0.915s
+user	0m0.004s
+sys	0m0.910s
+------------------------------------------
+*************************************
+Starting iteration 3
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00475916 s, 220 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.050448 s, 104 MB/s
+
+real	0m0.053s
+user	0m0.000s
+sys	0m0.052s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0452616 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.046s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.253966 s, 206 MB/s
+
+real	0m0.256s
+user	0m0.000s
+sys	0m0.256s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.474 s, 221 MB/s
+
+real	0m0.476s
+user	0m0.004s
+sys	0m0.472s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.890218 s, 236 MB/s
+
+real	0m0.893s
+user	0m0.016s
+sys	0m0.876s
+------------------------------------------
+*************************************
+Starting iteration 4
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0130439 s, 80.4 MB/s
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.015s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0225793 s, 232 MB/s
+
+real	0m0.024s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451508 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223899 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.004s
+sys	0m0.222s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.445961 s, 235 MB/s
+
+real	0m0.448s
+user	0m0.000s
+sys	0m0.448s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.88559 s, 237 MB/s
+
+real	0m0.888s
+user	0m0.009s
+sys	0m0.879s
+------------------------------------------
+*************************************
+Starting iteration 5
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00473468 s, 221 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0235332 s, 223 MB/s
+
+real	0m0.025s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451695 s, 232 MB/s
+
+real	0m0.046s
+user	0m0.000s
+sys	0m0.046s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223185 s, 235 MB/s
+
+real	0m0.226s
+user	0m0.000s
+sys	0m0.225s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.447239 s, 234 MB/s
+
+real	0m0.450s
+user	0m0.004s
+sys	0m0.446s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.892075 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.004s
+sys	0m0.890s
+------------------------------------------
+*************************************
+Starting iteration 6
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0136839 s, 76.6 MB/s
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.016s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.022757 s, 230 MB/s
+
+real	0m0.024s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0450203 s, 233 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.224956 s, 233 MB/s
+
+real	0m0.226s
+user	0m0.008s
+sys	0m0.218s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.480083 s, 218 MB/s
+
+real	0m0.482s
+user	0m0.012s
+sys	0m0.470s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.889452 s, 236 MB/s
+
+real	0m0.891s
+user	0m0.004s
+sys	0m0.887s
+------------------------------------------
+*************************************
+Starting iteration 7
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00468966 s, 224 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0228927 s, 229 MB/s
+
+real	0m0.024s
+user	0m0.004s
+sys	0m0.020s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451417 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.22384 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.005s
+sys	0m0.222s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.481182 s, 218 MB/s
+
+real	0m0.483s
+user	0m0.012s
+sys	0m0.470s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.891416 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.004s
+sys	0m0.889s
+------------------------------------------
+*************************************
+Starting iteration 8
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.014221 s, 73.7 MB/s
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.016s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0227418 s, 231 MB/s
+
+real	0m0.024s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0762469 s, 138 MB/s
+
+real	0m0.078s
+user	0m0.008s
+sys	0m0.071s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223681 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.000s
+sys	0m0.226s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.477294 s, 220 MB/s
+
+real	0m0.480s
+user	0m0.004s
+sys	0m0.476s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.890908 s, 235 MB/s
+
+real	0m0.892s
+user	0m0.016s
+sys	0m0.876s
+------------------------------------------
+*************************************
+Starting iteration 9
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0138991 s, 75.4 MB/s
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.016s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0504142 s, 104 MB/s
+
+real	0m0.052s
+user	0m0.000s
+sys	0m0.052s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451701 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.253702 s, 207 MB/s
+
+real	0m0.256s
+user	0m0.004s
+sys	0m0.252s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.477739 s, 219 MB/s
+
+real	0m0.480s
+user	0m0.000s
+sys	0m0.480s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.888351 s, 236 MB/s
+
+real	0m0.890s
+user	0m0.024s
+sys	0m0.866s
+------------------------------------------
+*************************************
+Starting iteration 10
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0123773 s, 84.7 MB/s
+
+real	0m0.015s
+user	0m0.000s
+sys	0m0.015s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0521073 s, 101 MB/s
+
+real	0m0.054s
+user	0m0.000s
+sys	0m0.054s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451428 s, 232 MB/s
+
+real	0m0.048s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.253366 s, 207 MB/s
+
+real	0m0.256s
+user	0m0.000s
+sys	0m0.255s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.447234 s, 234 MB/s
+
+real	0m0.449s
+user	0m0.001s
+sys	0m0.448s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.919425 s, 228 MB/s
+
+real	0m0.922s
+user	0m0.009s
+sys	0m0.913s
+------------------------------------------
+*************************************
+Starting iteration 11
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0125335 s, 83.7 MB/s
+
+real	0m0.015s
+user	0m0.000s
+sys	0m0.015s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0227853 s, 230 MB/s
+
+real	0m0.025s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0452038 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.224347 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.000s
+sys	0m0.224s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.444822 s, 236 MB/s
+
+real	0m0.446s
+user	0m0.001s
+sys	0m0.446s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.90595 s, 231 MB/s
+
+real	0m0.908s
+user	0m0.004s
+sys	0m0.895s
+------------------------------------------
+*************************************
+Starting iteration 12
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00541206 s, 194 MB/s
+
+real	0m0.008s
+user	0m0.000s
+sys	0m0.008s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0229452 s, 228 MB/s
+
+real	0m0.025s
+user	0m0.004s
+sys	0m0.020s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0730351 s, 144 MB/s
+
+real	0m0.075s
+user	0m0.000s
+sys	0m0.075s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.224862 s, 233 MB/s
+
+real	0m0.227s
+user	0m0.004s
+sys	0m0.223s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.476452 s, 220 MB/s
+
+real	0m0.478s
+user	0m0.000s
+sys	0m0.478s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.926466 s, 226 MB/s
+
+real	0m0.928s
+user	0m0.008s
+sys	0m0.920s
+------------------------------------------
+*************************************
+Starting iteration 13
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00471124 s, 223 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0560924 s, 93.5 MB/s
+
+real	0m0.059s
+user	0m0.005s
+sys	0m0.054s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0446405 s, 235 MB/s
+
+real	0m0.046s
+user	0m0.000s
+sys	0m0.046s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.256393 s, 204 MB/s
+
+real	0m0.258s
+user	0m0.004s
+sys	0m0.254s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.450557 s, 233 MB/s
+
+real	0m0.453s
+user	0m0.000s
+sys	0m0.452s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.9189 s, 228 MB/s
+
+real	0m0.921s
+user	0m0.008s
+sys	0m0.913s
+------------------------------------------
+*************************************
+Starting iteration 14
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0138027 s, 76.0 MB/s
+
+real	0m0.016s
+user	0m0.004s
+sys	0m0.012s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0534683 s, 98.1 MB/s
+
+real	0m0.055s
+user	0m0.000s
+sys	0m0.055s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.063254 s, 166 MB/s
+
+real	0m0.065s
+user	0m0.000s
+sys	0m0.065s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.22399 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.000s
+sys	0m0.226s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.449077 s, 233 MB/s
+
+real	0m0.451s
+user	0m0.000s
+sys	0m0.451s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.895511 s, 234 MB/s
+
+real	0m0.898s
+user	0m0.008s
+sys	0m0.890s
+------------------------------------------
+*************************************
+Starting iteration 15
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.013124 s, 79.9 MB/s
+
+real	0m0.015s
+user	0m0.000s
+sys	0m0.015s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0548486 s, 95.6 MB/s
+
+real	0m0.057s
+user	0m0.000s
+sys	0m0.057s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451869 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.225227 s, 233 MB/s
+
+real	0m0.227s
+user	0m0.000s
+sys	0m0.227s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.447002 s, 235 MB/s
+
+real	0m0.448s
+user	0m0.004s
+sys	0m0.444s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.890167 s, 236 MB/s
+
+real	0m0.892s
+user	0m0.008s
+sys	0m0.884s
+------------------------------------------
+*************************************
+Starting iteration 16
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0123464 s, 84.9 MB/s
+
+real	0m0.015s
+user	0m0.001s
+sys	0m0.014s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0530433 s, 98.8 MB/s
+
+real	0m0.055s
+user	0m0.000s
+sys	0m0.055s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0450959 s, 233 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.24924 s, 210 MB/s
+
+real	0m0.251s
+user	0m0.008s
+sys	0m0.243s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.44717 s, 234 MB/s
+
+real	0m0.449s
+user	0m0.008s
+sys	0m0.440s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.892624 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.012s
+sys	0m0.882s
+------------------------------------------
+*************************************
+Starting iteration 17
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00533263 s, 197 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0229219 s, 229 MB/s
+
+real	0m0.025s
+user	0m0.000s
+sys	0m0.025s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0748464 s, 140 MB/s
+
+real	0m0.077s
+user	0m0.000s
+sys	0m0.077s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.2552 s, 205 MB/s
+
+real	0m0.257s
+user	0m0.008s
+sys	0m0.249s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.448505 s, 234 MB/s
+
+real	0m0.450s
+user	0m0.004s
+sys	0m0.446s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.896764 s, 234 MB/s
+
+real	0m0.899s
+user	0m0.004s
+sys	0m0.895s
+------------------------------------------
+*************************************
+Starting iteration 18
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0123633 s, 84.8 MB/s
+
+real	0m0.015s
+user	0m0.000s
+sys	0m0.015s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0521483 s, 101 MB/s
+
+real	0m0.054s
+user	0m0.000s
+sys	0m0.054s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0453866 s, 231 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.224887 s, 233 MB/s
+
+real	0m0.226s
+user	0m0.000s
+sys	0m0.224s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.479878 s, 219 MB/s
+
+real	0m0.482s
+user	0m0.016s
+sys	0m0.466s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.925736 s, 227 MB/s
+
+real	0m0.928s
+user	0m0.016s
+sys	0m0.912s
+------------------------------------------
+*************************************
+Starting iteration 19
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00478054 s, 219 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.052019 s, 101 MB/s
+
+real	0m0.054s
+user	0m0.000s
+sys	0m0.055s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0448341 s, 234 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.256579 s, 204 MB/s
+
+real	0m0.259s
+user	0m0.008s
+sys	0m0.251s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.474713 s, 221 MB/s
+
+real	0m0.477s
+user	0m0.012s
+sys	0m0.465s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.892257 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.008s
+sys	0m0.886s
+------------------------------------------
+*************************************
+Starting iteration 20
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0133556 s, 78.5 MB/s
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.016s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0227102 s, 231 MB/s
+
+real	0m0.024s
+user	0m0.004s
+sys	0m0.020s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0780804 s, 134 MB/s
+
+real	0m0.080s
+user	0m0.000s
+sys	0m0.080s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.254734 s, 206 MB/s
+
+real	0m0.257s
+user	0m0.008s
+sys	0m0.249s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.480258 s, 218 MB/s
+
+real	0m0.483s
+user	0m0.012s
+sys	0m0.471s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.89122 s, 235 MB/s
+
+real	0m0.893s
+user	0m0.016s
+sys	0m0.877s
+------------------------------------------
+*************************************
+Starting iteration 21
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0046997 s, 223 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.022773 s, 230 MB/s
+
+real	0m0.024s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0771031 s, 136 MB/s
+
+real	0m0.079s
+user	0m0.000s
+sys	0m0.079s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.256418 s, 204 MB/s
+
+real	0m0.259s
+user	0m0.012s
+sys	0m0.247s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.449132 s, 233 MB/s
+
+real	0m0.451s
+user	0m0.004s
+sys	0m0.447s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.922679 s, 227 MB/s
+
+real	0m0.925s
+user	0m0.008s
+sys	0m0.917s
+------------------------------------------
+*************************************
+Starting iteration 22
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00469284 s, 223 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0505754 s, 104 MB/s
+
+real	0m0.053s
+user	0m0.001s
+sys	0m0.052s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0766184 s, 137 MB/s
+
+real	0m0.079s
+user	0m0.000s
+sys	0m0.078s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.254966 s, 206 MB/s
+
+real	0m0.257s
+user	0m0.004s
+sys	0m0.252s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.446604 s, 235 MB/s
+
+real	0m0.449s
+user	0m0.000s
+sys	0m0.449s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.891684 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.036s
+sys	0m0.858s
+------------------------------------------
+*************************************
+Starting iteration 23
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00476199 s, 220 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0377763 s, 139 MB/s
+
+real	0m0.040s
+user	0m0.000s
+sys	0m0.040s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0767755 s, 137 MB/s
+
+real	0m0.079s
+user	0m0.000s
+sys	0m0.079s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.257507 s, 204 MB/s
+
+real	0m0.260s
+user	0m0.004s
+sys	0m0.256s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.446922 s, 235 MB/s
+
+real	0m0.449s
+user	0m0.012s
+sys	0m0.437s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.919648 s, 228 MB/s
+
+real	0m0.922s
+user	0m0.020s
+sys	0m0.902s
+------------------------------------------
+*************************************
+Starting iteration 24
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.01302 s, 80.5 MB/s
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.016s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0537728 s, 97.5 MB/s
+
+real	0m0.056s
+user	0m0.000s
+sys	0m0.056s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0451607 s, 232 MB/s
+
+real	0m0.048s
+user	0m0.004s
+sys	0m0.044s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.255065 s, 206 MB/s
+
+real	0m0.257s
+user	0m0.000s
+sys	0m0.257s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.449325 s, 233 MB/s
+
+real	0m0.451s
+user	0m0.004s
+sys	0m0.446s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.890519 s, 235 MB/s
+
+real	0m0.892s
+user	0m0.012s
+sys	0m0.880s
+------------------------------------------
+*************************************
+Starting iteration 25
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00486279 s, 216 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0226319 s, 232 MB/s
+
+real	0m0.024s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0453721 s, 231 MB/s
+
+real	0m0.048s
+user	0m0.000s
+sys	0m0.048s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.224473 s, 234 MB/s
+
+real	0m0.227s
+user	0m0.004s
+sys	0m0.223s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.482537 s, 217 MB/s
+
+real	0m0.485s
+user	0m0.012s
+sys	0m0.473s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.89632 s, 234 MB/s
+
+real	0m0.898s
+user	0m0.012s
+sys	0m0.885s
+------------------------------------------
+*************************************
+Starting iteration 26
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00472103 s, 222 MB/s
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0537917 s, 97.5 MB/s
+
+real	0m0.056s
+user	0m0.000s
+sys	0m0.056s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0452402 s, 232 MB/s
+
+real	0m0.048s
+user	0m0.000s
+sys	0m0.048s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223239 s, 235 MB/s
+
+real	0m0.225s
+user	0m0.004s
+sys	0m0.220s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.449157 s, 233 MB/s
+
+real	0m0.451s
+user	0m0.004s
+sys	0m0.447s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.898868 s, 233 MB/s
+
+real	0m0.900s
+user	0m0.016s
+sys	0m0.884s
+------------------------------------------
+*************************************
+Starting iteration 27
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00739137 s, 142 MB/s
+
+real	0m0.010s
+user	0m0.000s
+sys	0m0.010s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0226995 s, 231 MB/s
+
+real	0m0.025s
+user	0m0.000s
+sys	0m0.025s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0450549 s, 233 MB/s
+
+real	0m0.046s
+user	0m0.000s
+sys	0m0.046s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223543 s, 235 MB/s
+
+real	0m0.225s
+user	0m0.000s
+sys	0m0.225s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.478237 s, 219 MB/s
+
+real	0m0.480s
+user	0m0.004s
+sys	0m0.476s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.892696 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.016s
+sys	0m0.878s
+------------------------------------------
+*************************************
+Starting iteration 28
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00484949 s, 216 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0232008 s, 226 MB/s
+
+real	0m0.024s
+user	0m0.000s
+sys	0m0.024s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.045102 s, 232 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223948 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.012s
+sys	0m0.214s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.447556 s, 234 MB/s
+
+real	0m0.449s
+user	0m0.008s
+sys	0m0.441s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.887365 s, 236 MB/s
+
+real	0m0.889s
+user	0m0.012s
+sys	0m0.877s
+------------------------------------------
+*************************************
+Starting iteration 29
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00477571 s, 220 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0226436 s, 232 MB/s
+
+real	0m0.025s
+user	0m0.000s
+sys	0m0.025s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0452788 s, 232 MB/s
+
+real	0m0.048s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.223862 s, 234 MB/s
+
+real	0m0.226s
+user	0m0.004s
+sys	0m0.222s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.447049 s, 235 MB/s
+
+real	0m0.448s
+user	0m0.004s
+sys	0m0.444s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.892962 s, 235 MB/s
+
+real	0m0.895s
+user	0m0.024s
+sys	0m0.871s
+------------------------------------------
+*************************************
+Starting iteration 30
+Workload: 1MB
+
+256+0 records in
+256+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00469598 s, 223 MB/s
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
+------------------------------------------
+Workload: 5MB
+
+1280+0 records in
+1280+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0233702 s, 224 MB/s
+
+real	0m0.025s
+user	0m0.000s
+sys	0m0.025s
+------------------------------------------
+Workload: 10MB
+
+2560+0 records in
+2560+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0447749 s, 234 MB/s
+
+real	0m0.047s
+user	0m0.000s
+sys	0m0.047s
+------------------------------------------
+Workload: 50MB
+
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.225176 s, 233 MB/s
+
+real	0m0.227s
+user	0m0.004s
+sys	0m0.222s
+------------------------------------------
+Workload: 100MB
+
+25600+0 records in
+25600+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.478175 s, 219 MB/s
+
+real	0m0.480s
+user	0m0.004s
+sys	0m0.476s
+------------------------------------------
+Workload: 200MB
+
+51200+0 records in
+51200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 0.892141 s, 235 MB/s
+
+real	0m0.894s
+user	0m0.008s
+sys	0m0.886s
+------------------------------------------
